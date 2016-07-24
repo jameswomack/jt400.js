@@ -1,6 +1,5 @@
 const Database = require('../../');
-const QueryBuilder = require('../../lib/query-builder')
-const database = new Database();
+const QueryBuilder = Database.QueryBuilder
 
 
 // E.g. 192.6.201.30
@@ -10,25 +9,9 @@ const user     = process.env.AS400_USER
 // E.g. testpassword12435
 const password = process.env.AS400_PASSWORD
 const baseURL  = `jdbc:as400://${hostname}`
-const libpath  = `${process.cwd()}/bin/jt400.jar`
 const dbName   = 'ITJAVATEST/WW52LOGH'
 const url      = `${baseURL}/;errors=full;trace=false;naming=SYSTEM;date format=iso;user=${user};password=${password}`
-const config   = {
-  drivername : 'com.ibm.as400.access.AS400JDBCDriver',
-  libpath,
-  url
-};
-
-
-console.info('select', QueryBuilder.createSelectQuery(dbName))
-
-const pool = require('node-jt400').pool({ host: hostname, user, password });
-pool.query(QueryBuilder.createSelectQuery(dbName))
-.then(function (result) {
- console.info('node result', result)
-});
-
-database.initialize(config);
+const database = Database({ url });
 
 /*
 const alterSQL1 = `ALTER TABLE ${dbName}

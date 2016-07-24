@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {
     "java": "^0.7.2",
-    "node-jt400": "github:jameswomack/node-jt400",
     "sql-query": "^0.1.26",
     "string": "^3.0.0"
   },
