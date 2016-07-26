@@ -4,7 +4,7 @@
   "description": "Implementation http://jt400.sourceforge.net/ on JavaScript",
   "main": "index.js",
   "dependencies": {
-    "java": "^0.7.2",
+    "java": "0.7.1",
     "sql-query": "^0.1.26",
     "string": "^3.0.0"
   },
